@@ -249,6 +249,120 @@
       color: #94a3b8;
     }
     
+    /* 相关资源部分 */
+    .resources-section {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .resource-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.12);
+      border-color: #93c5fd;
+    }
+    
+    .resource-title {
+      display: flex;
+      align-items: center;
+      color: #1e40af;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+    
+    .resource-title i {
+      margin-right: 12px;
+      color: #3b82f6;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .resource-list {
+      list-style: none;
+    }
+    
+    .resource-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s ease;
+    }
+    
+    .resource-item:hover {
+      background-color: #eff6ff;
+      border-color: #bfdbfe;
+      transform: translateX(5px);
+    }
+    
+    .resource-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .resource-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+    
+    .resource-icon i {
+      color: white;
+      font-size: 1.2rem;
+    }
+    
+    .resource-content {
+      flex-grow: 1;
+    }
+    
+    .resource-name {
+      font-weight: 600;
+      color: #1e3a8a;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    
+    .resource-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 0.95rem;
+      word-break: break-all;
+      transition: color 0.2s ease;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    
+    .resource-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    
+    .resource-link i {
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+    
     /* 空状态提示 */
     .empty-state {
       text-align: center;
@@ -311,6 +425,20 @@
       .section-title {
         font-size: 1.6rem;
       }
+      
+      .resource-card {
+        padding: 25px 20px;
+      }
+      
+      .resource-item {
+        padding: 15px;
+      }
+      
+      .resource-icon {
+        width: 45px;
+        height: 45px;
+        margin-right: 15px;
+      }
     }
     
     @media (max-width: 600px) {
@@ -333,6 +461,20 @@
       
       .section-title {
         font-size: 1.4rem;
+      }
+      
+      .resource-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .resource-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+      }
+      
+      .resource-name {
+        font-size: 1rem;
       }
     }
   </style>
@@ -377,15 +519,62 @@
               </div>
               
               <div class="article-footer">
-                <a href="/articles/2026-cross-border-logistics-sea-shipment-guide.html" class="read-more">
+                <a href="./articles/2026-cross-border-logistics-sea-shipment-guide.html" class="read-more">
                   阅读全文 <i class="fas fa-arrow-right"></i>
                 </a>
                 <span class="article-date">2026年1月</span>
               </div>
             </article>
           </li>
- 
         </ul>
+      </section>
+      
+      <!-- 相关资源部分 -->
+      <section class="resources-section">
+        <div class="resource-card">
+          <h2 class="resource-title">
+            <i class="fas fa-link"></i> 相关资源
+          </h2>
+          
+          <ul class="resource-list">
+            <li class="resource-item">
+              <div class="resource-icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-name">物流知识主站</div>
+                <a href="https://www.feidux.xyz" target="_blank" class="resource-link">
+                  https://www.feidux.xyz <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </li>
+            
+            <!-- 可以添加更多资源 -->
+            <li class="resource-item">
+              <div class="resource-icon">
+                <i class="fas fa-ship"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-name">国际海运查询工具</div>
+                <a href="#" class="resource-link">
+                  即将上线 <i class="fas fa-clock"></i>
+                </a>
+              </div>
+            </li>
+            
+            <li class="resource-item">
+              <div class="resource-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-name">报关单证模板库</div>
+                <a href="#" class="resource-link">
+                  即将上线 <i class="fas fa-clock"></i>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
       
       <!-- 如果没有文章时的提示 -->
@@ -402,7 +591,6 @@
   <footer>
     <div class="footer-content">
       <h3 class="footer-title">国际物流知识分享</h3>
-      <p class="footer-description">专注于跨境物流、供应链管理、进出口流程等专业知识分享，助力中国企业顺利出海</p>
       <div class="copyright">
         <p>© 2026 国际物流知识分享 | 专业跨境物流指南</p>
         <p>本网站内容仅供参考，实际操作请咨询专业物流顾问</p>

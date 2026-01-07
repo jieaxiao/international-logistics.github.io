@@ -1,19 +1,413 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>国际物流知识分享</title>
+  <title>国际物流知识分享 | 专业跨境物流指南</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    }
+    
+    body {
+      background-color: #f8fafc;
+      color: #334155;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    /* 背景装饰 */
+    .bg-decoration {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    }
+    
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      right: -100px;
+    }
+    
+    .circle-2 {
+      width: 200px;
+      height: 200px;
+      bottom: 20%;
+      left: -50px;
+    }
+    
+    .circle-3 {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      right: 20%;
+    }
+    
+    /* 容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* 头部 */
+    header {
+      padding: 60px 0 40px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .site-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .site-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .site-subtitle {
+      font-size: 1.1rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 25px auto 0;
+      font-weight: 400;
+    }
+    
+    /* 主要内容区域 */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 80px;
+    }
+    
+    /* 文章列表样式 */
+    .articles-section {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 30px;
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      color: #1e40af;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .section-title i {
+      margin-right: 12px;
+      background: linear-gradient(to right, #3b82f6, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* 文章卡片 */
+    .articles-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 25px;
+    }
+    
+    .article-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15);
+      border-color: #bfdbfe;
+    }
+    
+    .article-header {
+      padding: 25px 25px 15px;
+      position: relative;
+    }
+    
+    .article-badge {
+      display: inline-block;
+      background: linear-gradient(to right, #3b82f6, #1d4ed8);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+    
+    .article-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e3a8a;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    
+    .article-excerpt {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .article-body {
+      padding: 0 25px 20px;
+      flex-grow: 1;
+    }
+    
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+    
+    .tag {
+      background-color: #eff6ff;
+      color: #1e40af;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    
+    .article-footer {
+      padding: 20px 25px;
+      background-color: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    
+    .read-more i {
+      margin-left: 8px;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .article-card:hover .read-more i {
+      transform: translateX(4px);
+    }
+    
+    .read-more:hover {
+      color: #1d4ed8;
+    }
+    
+    .article-date {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    
+    /* 空状态提示 */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #64748b;
+    }
+    
+    .empty-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #cbd5e1;
+    }
+    
+    /* 页脚 */
+    footer {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .footer-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .footer-description {
+      color: #cbd5e1;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .copyright {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 900px) {
+      .articles-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .site-title {
+        font-size: 2.4rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header {
+        padding: 40px 0 30px;
+      }
+      
+      .site-title {
+        font-size: 2rem;
+      }
+      
+      .article-header, .article-body, .article-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .article-title {
+        font-size: 1.3rem;
+      }
+      
+      .section-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>国际物流知识分享</h1>
-  <ul>
-    <li>
-      <a href="2026-cross-border-logistics-sea-shipment-guide.md">
-        22026 年跨境物流新手指南：一票海运从订舱到入仓的完整拆解
-      </a>
-    </li>
-    <!-- 如果以后有新文章可继续添加 -->
-  </ul>
+  <!-- 背景装饰元素 -->
+  <div class="bg-decoration">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+  </div>
+  
+  <!-- 页面内容 -->
+  <div class="container">
+    <header>
+      <h1 class="site-title">国际物流知识分享</h1>
+      <p class="site-subtitle">专业跨境物流指南、海运空运流程解析、行业趋势与实操经验分享</p>
+    </header>
+    
+    <main class="main-content">
+      <section class="articles-section">
+        <h2 class="section-title">
+          <i class="fas fa-book-open"></i> 精选文章
+        </h2>
+        
+        <ul class="articles-list">
+          <li>
+            <article class="article-card">
+              <div class="article-header">
+                <span class="article-badge">新手必读</span>
+                <h3 class="article-title">2026年跨境物流新手指南：一票海运从订舱到入仓的完整拆解</h3>
+                <p class="article-excerpt">深度解析海运全流程，避开新手常见陷阱，掌握从订舱到入仓的关键节点与风险管理。</p>
+              </div>
+              
+              <div class="article-body">
+                <div class="article-tags">
+                  <span class="tag">海运</span>
+                  <span class="tag">新手指南</span>
+                  <span class="tag">跨境物流</span>
+                  <span class="tag">2026趋势</span>
+                </div>
+              </div>
+              
+              <div class="article-footer">
+                <a href="/articles/2026-cross-border-logistics-sea-shipment-guide.html" class="read-more">
+                  阅读全文 <i class="fas fa-arrow-right"></i>
+                </a>
+                <span class="article-date">2026年1月</span>
+              </div>
+            </article>
+          </li>
+ 
+        </ul>
+      </section>
+      
+      <!-- 如果没有文章时的提示 -->
+      <!-- <div class="empty-state">
+        <div class="empty-icon">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <h3>暂无文章</h3>
+        <p>更多物流知识文章正在准备中，敬请期待！</p>
+      </div> -->
+    </main>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <h3 class="footer-title">国际物流知识分享</h3>
+      <p class="footer-description">专注于跨境物流、供应链管理、进出口流程等专业知识分享，助力中国企业顺利出海</p>
+      <div class="copyright">
+        <p>© 2026 国际物流知识分享 | 专业跨境物流指南</p>
+        <p>本网站内容仅供参考，实际操作请咨询专业物流顾问</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
